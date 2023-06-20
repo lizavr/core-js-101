@@ -50,8 +50,11 @@ function getJSON(obj) {
  *    const r = fromJSON(Circle.prototype, '{"radius":10}');
  *
  */
-function fromJSON(/* proto, json */) {
-  throw new Error('Not implemented');
+function fromJSON(proto, json) {
+  const obj = Object.create(proto);
+  const data = JSON.parse(json);
+  Object.assign(obj, data);
+  return obj;
 }
 
 /**
@@ -108,9 +111,20 @@ function fromJSON(/* proto, json */) {
  *  For more examples see unit tests.
  */
 
+// class ElementSelector {
+//   constructor(value) {
+//     this.value = value;
+//   }
+
+//   stringify() {
+//     return this.value.stringify();
+//   }
+// }
+
 const cssSelectorBuilder = {
   element(/* value */) {
     throw new Error('Not implemented');
+    // return new ElementSelector(value);
   },
 
   id(/* value */) {
