@@ -137,14 +137,18 @@ function isTriangle(a, b, c) {
  *
  */
 function doRectanglesOverlap(rect1, rect2) {
+  const rect1Left = rect1.left;
   const rect1Right = rect1.left + rect1.width;
+  const rect1Top = rect1.top;
   const rect1Bottom = rect1.top + rect1.height;
 
+  const rect2Left = rect2.left;
   const rect2Right = rect2.left + rect2.width;
+  const rect2Top = rect2.top;
   const rect2Bottom = rect2.top + rect2.height;
 
-  const overlapX = rect1.Left < rect2Right && rect1Right > rect2.Left;
-  const overlapY = rect1.Top < rect2Bottom && rect1Bottom > rect2.Top;
+  const overlapX = rect1Left < rect2Right && rect1Right > rect2Left;
+  const overlapY = rect1Top < rect2Bottom && rect1Bottom > rect2Top;
 
   return overlapX && overlapY;
 }
